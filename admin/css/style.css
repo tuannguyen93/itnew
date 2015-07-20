@@ -1,0 +1,100 @@
+/***** MAIN SETTINGS *******/
+
+* {margin: 0; padding: 0}
+p, label, a {color: #333333; line-height: 1.5; font-size: 13px; font-family:'lucida grande',tahoma,verdana,arial,sans-serif； }
+ul{list-style: none;}
+a {color: #43423F; text-decoration: none; }
+a:hover {text-decoration: underline; }
+h2 a, h2{ margin: 0; font-size: 19px; font-family: museo, georgia, san-serif;}
+
+/**************** MAIN STRUCTURE **********/
+#container{margin: 0 auto;width: 1000px;background: #fff;}
+#header{background: #025587;padding: 70px 40px 0px 40px; }
+#header h1 a { margin: 0; font-size: 37px; font-family: museo, georgia, san-serif; color: #fff }
+.slogan {font-weight: bold; color: #ABC1CF;}
+.logo_colour {color: #80FFFF}
+.border_header {width: 1000px; margin: 0 auto; padding-bottom: 20px;}
+
+#navigation{margin: 0px auto; width: 1000px;background: #2B4563; height: 70px;}
+.greeting {color:#E0E0E0; float: right; padding: 27px 10px 0px 0px; font: normal 80% 'lucida sans unicode', arial, sans-serif;}
+#navigation ul{	margin: 0 ;padding-top: 0; float: left;}
+#navigation ul li{display: inline-block; padding: 24px 30px 24px 30px; }
+#navigation li a{color: #fff;text-decoration: none; font-size: 1.2em; font: normal 100% 'lucida sans unicode', arial, sans-serif;}
+#navigation  ul li:hover { background: #1D2E41; }
+.active {color: #1D2E41}
+
+#content-container{float: left;width: 1000px;}
+
+#section-navigation{float: left;width: 160px; height: 100%; padding: 20px 0;margin: 0 20px;display: inline;}
+#section-navigation ul li{margin: 5px 0px;padding: 0;}
+.pages {list-style: square; margin: 0 0 0 20px;}
+
+#content{float: left;width: 530px;padding: 20px 0;margin: 0 0 0 15px;}
+#content .meta {font-size: 11px; color: #666; float: right;}
+
+#aside{float: right;width: 207px;padding: 10px 0;margin: 0 20px 0 0;}
+
+#content{float: left;width: 785px;padding: 15px 0;margin: 0 0 0 10px;}
+#content h2 { margin: 0; }
+
+
+#aside{float: right;width: 200px;padding: 20px 0;margin: 0 20px 0 0;display: inline;}
+#aside h3 { margin: 0; }
+
+
+#footer{clear: both;background: #273D58;text-align: right;	padding: 20px 0px 20px 0px;}
+.footer-links {width: 1000px; }
+.footer-links li {display: inline; margin: 0px 7px 0px 7px;}
+.footer-links li a {color: #fff;}
+
+/******* FORM **********/
+legend {color:#000; background-color: #FFCBA0; padding: 3px 23px; border-radius: 5px;}
+fieldset {border:1px solid #FFCBA0; margin: 10px 0px;padding: 10px; border-radius: 5px;}
+fieldset div {margin: 10px 0px;}
+label {display: block;width:30em; font-weight: bold;margin: 0px 15px 5px 0px;}
+textarea {border:1px solid #ccc; height: 400px; padding: 5px}
+input[type="submit"] {padding: 3px; width: 200px;}
+input[type="submit"]:hover {cursor: pointer;}
+
+/****** COMMENT SECTION *********/
+.disscuss { margin: 20px 15px; list-style: decimal inside; }
+.disscuss li {border: 1px solid #FFCBA0; background-color: #FCEFE3; padding: 5px 10px; border-radius: 5px; margin: 20px 0px; overflow: hidden; }
+.disscuss .author {font-weight: bold;}
+.date {float: right; padding: 0px 5px; font-size: 11px;}
+
+.comment-wrap {position: relative;}
+
+a.remove {position: absolute; top: 10px; right: 10px; cursor: pointer; color: red;}
+
+
+/* CMS classes */
+.error {font-weight: bold;color: #C00; text-align: center;}
+.no-page {text-align: center;}
+.success {font-weight: bold;color: green; text-align: center;}
+.warning {font-size: 11px; color: #c00; text-align: center;}
+.required {color: #c00;}
+.selected {font-weight: bold;}
+.avatar { width: 60px; height: 60px;float: left;margin: 0 25px 0px 0px; border:1px solid #c1c1c1; padding: 3px; background-color: white;}
+.not-avai {color: red;}
+.avai {color: green; font-weight:  bold;}
+.avatar { width: 60px; height: 60px;float: left;margin: 0 25px 0px 0px; border:1px solid #c1c1c1; padding: 3px; background-color: white;}
+input.change {width: 100px;}
+
+/****** PAGINATION  *******/
+.pagination {float: right; list-style: none; text-align: center;}
+.pagination li {display: inline; margin: 0px 5px;}
+.pagination li {display: block; float: left; padding: 0 5px; border: 1px solid #649805; margin: 0px 5px;}
+
+
+/******* TABLE LAYOUT *********/
+table { margin: 1em; border-collapse: collapse; }
+td, th { padding: .3em; border: 1px #ccc solid; }
+thead { background: #fc9; } 
+tbody a.delete {color:#C40303;}
+tbody a.edit {color: #2E87AD; }
+
+/******* AJAX *********/
+.check {font-weight: bold;}
+.short {color: #c00; font-weight: bold;}
+.not-avai {font-weight:  bold; color: red;}
+.avai {color: green; font-weight:  bold;}
