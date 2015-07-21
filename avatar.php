@@ -1,84 +1,84 @@
-<?php 
+﻿<?php 
 session_start();
 include('includes/mysqli_connect.php');?>
 <?php include('includes/functions.php');?>
 <?php
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if(isset($_FILES['image'])) {
-			// T?o m?t bi?n ch?a l?i
+			// Tạo biến chứa lỗi
 			$errors = array();
 
-			// T?o array ch?a c�c d?nh d?ng cho ph�p
+			// Tạo array chứa phần mở rộng cho phép
 			$allowed = array('image/jpeg', 'image/jpg', 'image/png', 'images/x-png');
 
-			// Ki?m tra t�n file c� ph?i d?nh d?ng cho ph�p
+			// Kiểm tra phần mở rộng, hợp lệ thì đổi tên tập tin
 			if(in_array(strtolower($_FILES['image']['type']), $allowed)) {
-				// N?u d?nh d?ng du?c cho ph�p th� t�ch l?y d?nh d?ng, d?i t�n r?i g?n d?nh d?ng l?i - d?i t�n file
+				// Đổi tên tập tin
 				$ext = end(explode('.', $_FILES['image']['name']));
 				$renamed = uniqid(rand(), true).'.'."$ext";
     
-                //Ki?m tra xem h�nh d� v�o thu m?c upload chua?
+                //Kiểm tra có thư mục upload chưa
 				if(!move_uploaded_file($_FILES['image']['tmp_name'], "uploads/images/".$renamed)) {
-					$errors[] = "<p class='error'>L?i h? th?ng</p>";
+					$errors[] = "<p class='error'>Lỗi hệ thống</p>";
 				} else {
-					echo "Ok! �� t?i l�n ho�n t?t";
+					echo "Ok! Đã tải lên thành công";
 				}
 			} else {
-				// Ngu?i d�ng t?i l�n file kh�ng d�ng d?nh d?ng cho ph�p.
-				$errors[] = "<p class='error'>B?n ph?i upload t?p ?nh c� d?nh d?ng png v� jpg</p>";
+				// Người dùng tải lên định dạng không cho phép
+				$errors[] = "<p class='error'>Bạn chỉ được tải lên hình ảnh với định dạng png hoặc jpg</p>";
 			} 
 		} // END isset $_FILES
 
-	//Ki?m tra xem c� l?i hay kh�ng?
+	//Kiểm tra có lỗi hay không
     if($_FILES['image']['error'] > 0) {
-        $errors[] = "<p class='error'>T?p ?nh kh�ng th? t?i l�n v�: <strong>";
+        $errors[] = "<p class='error'>Tệp ảnh không thể tải lên vì: <strong>";
 
-        // In ra th�ng b�o k�m theo
+        // In ra thông báo lỗi kèm theo
         switch ($_FILES['image']['error']) {
             case 1:
-                $errors[] .= "K�ch thu?c t?p l?n hon k�ch thu?c c?a th�ng s? upload_max_filesize c�i d?t trong php.ini";
+                $errors[] .= "Kích thước tập tin lớn hơn kích thước upload_max_filesize cài đặt trong php.ini";
                 break;
                 
             case 2:
-                $errors[] .= "K�ch thu?c t?p l?n hon k�ch thu?c c?a th�ng s? MAX_FILE_SIZE trong HTML form";
+                $errors[] .= "Kích thước tập tin lớn hơn kích thước  MAX_FILE_SIZE trong HTML form";
                 break;
              
             case 3:
-                $errors[] .= "Kh�ng th? t?i l�n ho�n to�n";
+                $errors[] .= "Không thể tải lên hoàn toàn";
                 break;
             
             case 4:
-                $errors[] .= "Kh�ng c� t?p n�o du?c t?i l�n";
+                $errors[] .= "Không có tệp nào được tải lên";
                 break;
 
             case 6:
-                $errors[] .= "Kh�ng t�m th?y thu m?c t?i l�n";
+                $errors[] .= "Không tìm thấy thư mục uploads";
                 break;
 
             case 7:
-                $errors[] .= "Kh�ng th? ghi v�o thu m?c";
+                $errors[] .= "Không có quyền ghi vào thư mục";
                 break;
 
             case 8:
-                $errors[] .= "T?i l�n t?p b? ng?ng";
+                $errors[] .= "Tải lên bị ngưng";
                 break;
             
             default:
-                $errors[] .= "H? th?ng d� x?y ra l?i";
+                $errors[] .= "Hệ thống xảy ra lỗi";
                 break;
         } // END of switch
 
         $errors[] .= "</strong></p>";
     } // END of error IF
 
-    // X�a t?p t?m t?i l�n v� d?i t�n l�c tru?c
+    // Xóa tập tin tạm thời
     if(isset($_FILES['image']['tmp_name']) && is_file($_FILES['image']['tmp_name']) && file_exists($_FILES['image']['tmp_name'])) {
     	unlink($_FILES['image']['tmp_name']);
     }
 
 	} // END main if
     
-    //Kh�ng c� l?i n�o h?t th� c�i d?t avatar l� h�nh upload l�n
+    //Kiểm tra không có lỗi thì cập nhật CSDL
 	if(empty($errors)) {
 		// Update cSDL
 		$q = "UPDATE users SET avatar = '{$renamed}' WHERE user_id = {$_SESSION['uid']} LIMIT 1";
